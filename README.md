@@ -16,7 +16,7 @@
 
 # Deploy Netflix Clone on Cloud using Jenkins - DevSecOps Project!
 
-### **Phase 1: Initial Setup and Deployment**
+## **Phase 1: Initial Setup and Deployment**
 
 **Step 1: Launch EC2 (Ubuntu 24.04):**
 
@@ -74,7 +74,7 @@ Now recreate the Docker image with your api key:
 docker build --build-arg TMDB_V3_API_KEY=<your-api-key> -t netflix .
 ```
 
-**Phase 2: Security**
+## Phase 2: Security
 
 1. **Install SonarQube and Trivy:**
     - Install SonarQube and Trivy on the EC2 instance to scan for vulnerabilities.
@@ -108,7 +108,7 @@ docker build --build-arg TMDB_V3_API_KEY=<your-api-key> -t netflix .
     - Integrate SonarQube with your CI/CD pipeline.
     - Configure SonarQube to analyze code for quality and security issues.
 
-**Phase 3: CI/CD Setup**
+## Phase 3: CI/CD Setup
 
 1. **Install Jenkins for Automation:**
     - Install Jenkins on the EC2 instance to automate deployment:
@@ -196,7 +196,7 @@ pipeline {
         }
         stage('Checkout from Git') {
             steps {
-                git branch: 'main', url: 'https://github.com/N4si/DevSecOps-Project.git'
+                git branch: 'main', url: 'https://github.com/imran1509/DevSecOps-Project-Netflix-Deployment.git'
             }
         }
         stage("Sonarqube Analysis") {
