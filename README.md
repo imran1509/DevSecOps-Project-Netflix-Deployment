@@ -646,13 +646,13 @@ To visualize metrics, you need to add a data source. Follow these steps:
 
 To make it easier to view metrics, you can import a pre-configured dashboard. Follow these steps:
 
-- Click on the "+" (plus) icon in the left sidebar to open the "Create" menu.
-
 - Select "Dashboard."
+
+- Click on the "+" (plus) icon in the top right corner.
 
 - Click on the "Import" dashboard option.
 
-- Enter the dashboard code you want to import (e.g., code 1860).
+- Enter the dashboard code you want to import (e.g., code 1860 for node exporter). (you can search for code on google)
 
 - Click the "Load" button.
 
