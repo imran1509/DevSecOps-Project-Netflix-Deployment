@@ -642,7 +642,7 @@ To visualize metrics, you need to add a data source. Follow these steps:
   - Set the "URL" to `http://<Your_IP>:9090`.
   - Click the "Save & Test" button to ensure the data source is working.
 
-**Step 10: Import a Dashboard:**
+**Step 10: Import node exporter Dashboard:**
 
 To make it easier to view metrics, you can import a pre-configured dashboard. Follow these steps:
 
@@ -666,9 +666,25 @@ Grafana is a powerful tool for creating visualizations and dashboards, and you c
 
 That's it! You've successfully installed and set up Grafana to work with Prometheus for monitoring and visualization.
 
-2. **Install and Configure Prometheus Plugin Integration in Jenkins:**
-    - Install "Prometheus metrics" in Jenkins
-    - Integrate Jenkins with Prometheus to monitor the CI/CD pipeline.
+**Step 11: Install and Configure Prometheus Plugin Integration in Jenkins:**
+
+- Install "Prometheus metrics" in Jenkins
+    
+- Restart jenkins
+    
+- Go to Manage Jenkins > Systems
+    
+- look for Prometheus and don't change anything
+    
+- Click on apply and save
+    
+- We have already added Jenkins in Prometheus.yml file on monitoring server in Installing node exporter step.
+
+**Step 12: Add/Import Jenkins dashboard in grafana:**
+
+- Just like we added "Node exporter" dashboard.
+
+- Import "Jenkins" dashboard in grafana.
 
 
 **Phase 5: Notification**
