@@ -646,7 +646,7 @@ To visualize metrics, you need to add a data source. Follow these steps:
 
 To make it easier to view metrics, you can import a pre-configured dashboard. Follow these steps:
 
-- Select "Dashboard."
+- Go to "Dashboards" in the left menu bar.
 
 - Click on the "+" (plus) icon in the top right corner.
 
