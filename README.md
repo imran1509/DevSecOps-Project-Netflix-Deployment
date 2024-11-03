@@ -630,7 +630,7 @@ When you log in for the first time, Grafana will prompt you to change the defaul
 
 To visualize metrics, you need to add a data source. Follow these steps:
 
-- Click on the gear icon (⚙️) in the left sidebar to open the "Configuration" menu.
+- Go to "Connections" in the left sidebar menu.
 
 - Select "Data Sources."
 
@@ -638,8 +638,8 @@ To visualize metrics, you need to add a data source. Follow these steps:
 
 - Choose "Prometheus" as the data source type.
 
-- In the "HTTP" section:
-  - Set the "URL" to `http://localhost:9090` (assuming Prometheus is running on the same server).
+- In the "Connection" section:
+  - Set the "URL" to `http://<Your_IP>:9090`.
   - Click the "Save & Test" button to ensure the data source is working.
 
 **Step 10: Import a Dashboard:**
