@@ -691,6 +691,20 @@ That's it! You've successfully installed and set up Grafana to work with Prometh
 
 1. **Implement Notification Services:**
     - Set up email notifications in Jenkins or other notification mechanisms.
+  
+    - Go to System: From the Jenkins dashboard, go to **Manage Jenkins** > **System**
+  
+    - Locate ‘Extended E-mail Notification’ Section: Scroll down to find the **Extended E-mail Notification** section
+    
+    - SMTP Server Configuration:
+        - SMTP Server: Enter the address of your SMTP server (e.g., smtp.gmail.com for Gmail).
+        - Default User E-mail Suffix: If all emails are from the same domain (like @example.com), you can set it here.
+        - Use SMTP Authentication: Enable this if your SMTP server requires authentication.
+        - SMTP Username: Enter the username/email id for your email account.
+        - SMTP Password: Enter the password for the email account (Create app password and use that instead of your actual password).
+        - Use SSL/TLS: Enable this if required by your SMTP server. For Gmail, use SSL on port 465 or TLS on port 587.
+        - SMTP Port: Common ports are 587 for TLS and 465 for SSL.
+        - In our case we used SSL
 
 # Phase 6: Kubernetes
 
