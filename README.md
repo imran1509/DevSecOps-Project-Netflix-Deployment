@@ -782,8 +782,8 @@ That's it! You've successfully installed and set up Grafana to work with Prometh
                 }
             }
         }
-            post {
-         always {
+         post {
+          always {
             emailext attachLog: true,
                 subject: "'${currentBuild.result}'",
                 body: "Project: ${env.JOB_NAME}<br/>" +
