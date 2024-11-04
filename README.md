@@ -708,87 +708,94 @@ That's it! You've successfully installed and set up Grafana to work with Prometh
      
     - Add Post build Email notification in Jenkins Pipeline script
   
-        ```groovy
-
-
-pipeline{
-    agent any
-    tools{
-        jdk 'jdk17'
-        nodejs 'node16'
-    }
-    environment {
-        SCANNER_HOME=tool 'sonar-scanner'
-    }
-    stages {
-        stage('clean workspace'){
-            steps{
-                cleanWs()
-            }
+   ```Groovy
+    pipeline{
+        agent any
+        tools{
+            jdk 'jdk17'
+            nodejs 'node16'
         }
-        stage('Checkout from Git'){
-            steps{
-                git branch: 'main', url: 'https://github.com/imran1509/DevSecOps-Project-Netflix-Deployment.git'
-            }
+        environment {
+            SCANNER_HOME=tool 'sonar-scanner'
         }
-        stage("Sonarqube Analysis "){
-            steps{
-                withSonarQubeEnv('sonar-server') {
-                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Netflix \
-                    -Dsonar.projectKey=Netflix-test '''
+        stages {
+            stage('clean workspace'){
+                steps{
+                    cleanWs()
                 }
             }
-        }
-        stage("quality gate"){
-           steps {
-                script {
-                    waitForQualityGate abortPipeline: false, credentialsId: 'Sonar-token' 
+            stage('Checkout from Git'){
+                steps{
+                    git branch: 'main', url: 'https://github.com/imran1509/DevSecOps-Project-Netflix-Deployment.git'
                 }
-            } 
-        }
-        stage('Install Dependencies') {
-            steps {
-                sh "npm install"
             }
-        }
-        stage('OWASP FS SCAN') {
-            steps {
-                dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP-Check'
-                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
-            }
-        }
-        stage('TRIVY FS SCAN') {
-            steps {
-                sh "trivy fs . > trivyfs.txt"
-            }
-        }
-        stage("Docker Build & Push"){
-            steps{
-                script{
-                   withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){   
-                       sh "docker build --build-arg TMDB_V3_API_KEY=<your_API_key> -t netflix ."
-                       sh "docker tag netflix imran1509/netflix:latest "
-                       sh "docker push imran1509/netflix:latest "
+            stage("Sonarqube Analysis "){
+                steps{
+                    withSonarQubeEnv('sonar-server') {
+                        sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Netflix \
+                        -Dsonar.projectKey=Netflix-test '''
                     }
                 }
             }
-        }
-        stage("TRIVY"){
-            steps{
-                sh "trivy image imran1509/netflix:latest > trivyimage.txt" 
+            stage("quality gate"){
+               steps {
+                    script {
+                        waitForQualityGate abortPipeline: false, credentialsId: 'Sonar-token' 
+                    }
+                } 
+            }
+            stage('Install Dependencies') {
+                steps {
+                    sh "npm install"
+                }
+            }
+            stage('OWASP FS SCAN') {
+                steps {
+                    dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP-Check'
+                    dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+                }
+            }
+            stage('TRIVY FS SCAN') {
+                steps {
+                    sh "trivy fs . > trivyfs.txt"
+                }
+            }
+            stage("Docker Build & Push"){
+                steps{
+                    script{
+                       withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){   
+                           sh "docker build --build-arg TMDB_V3_API_KEY=<your_API_key> -t netflix ."
+                           sh "docker tag netflix imran1509/netflix:latest "
+                           sh "docker push imran1509/netflix:latest "
+                        }
+                    }
+                }
+            }
+            stage("TRIVY"){
+                steps{
+                    sh "trivy image imran1509/netflix:latest > trivyimage.txt" 
+                }
+            }
+            stage('Deploy to container'){
+                steps{
+                    sh 'docker run -d --name netflix -p 8081:80 imran1509/netflix:latest'
+                }
             }
         }
-        stage('Deploy to container'){
-            steps{
-                sh 'docker run -d --name netflix -p 8081:80 imran1509/netflix:latest'
+            post {
+         always {
+            emailext attachLog: true,
+                subject: "'${currentBuild.result}'",
+                body: "Project: ${env.JOB_NAME}<br/>" +
+                    "Build Number: ${env.BUILD_NUMBER}<br/>" +
+                    "URL: ${env.BUILD_URL}<br/>",
+                to: 'iambatmanthegoat@gmail.com',                                #change mail here
+                attachmentsPattern: 'trivyfs.txt,trivyimage.txt'
             }
         }
     }
 
-
-  
-      
-
+    ```
 # Phase 6: Kubernetes
 
 ## Create Kubernetes Cluster with Nodegroups
