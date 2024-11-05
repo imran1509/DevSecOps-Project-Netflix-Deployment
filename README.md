@@ -49,7 +49,7 @@
 
 It will show an error cause you need API key
 
-**Step 4: Get the API Key:**
+### Step 4: Get the API Key:
 
 - Open a web browser and navigate to TMDB (The Movie Database) website.
 - Click on "Login" and create an account.
@@ -59,50 +59,56 @@ It will show an error cause you need API key
 - Provide the required basic details and click "Submit."
 - You will receive your TMDB API key.
 
-Now recreate the Docker image with your api key:
-```
-docker build --build-arg TMDB_V3_API_KEY=<your-api-key> -t netflix .
-```
+- Now recreate the Docker image with your api key:
+   ```Bash
+    docker build --build-arg TMDB_V3_API_KEY=<your-api-key> -t netflix .
+   ```
 
 ## Phase 2: Security
 
-1. **Install SonarQube and Trivy:**
-    - Install SonarQube and Trivy on the EC2 instance to scan for vulnerabilities.
+### Step 1: Install SonarQube and Trivy:
+
+- Install SonarQube and Trivy on the EC2 instance to scan for vulnerabilities.
         
-        sonarqube
-        ```
+- sonarqube
+  
+  ```bash
+  
         docker run -d --name sonar -p 9000:9000 sonarqube:lts-community
-        ```
+  ```
         
+- To access Sonarqube: 
         
-        To access: 
-        
-        publicIP:9000 (by default username & password is admin)
-        
-        To install Trivy:
-        ```
-        sudo apt-get install wget apt-transport-https gnupg lsb-release
-        wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
-        echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
-        sudo apt-get update
-        sudo apt-get install trivy        
-        ```
-        
-        to scan image using trivy
-        ```
+  Your_public_IP:9000 (by default username & password is admin)
+
+- To install Trivy:
+ 
+   ```bash
+            sudo apt-get install wget apt-transport-https gnupg lsb-release
+            wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+            echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
+            sudo apt-get update
+            sudo apt-get install trivy        
+   ```
+
+- to scan image using trivy
+  
+  ```bash
         trivy image <imageid>
-        ```
+  ```
         
         
-2. **Integrate SonarQube and Configure:**
-    - Integrate SonarQube with your CI/CD pipeline.
-    - Configure SonarQube to analyze code for quality and security issues.
+### Step 2: Integrate SonarQube and Configure:
+
+- Integrate SonarQube with your CI/CD pipeline.
+- Configure SonarQube to analyze code for quality and security issues.
 
 ## Phase 3: CI/CD Setup
 
-1. **Install Jenkins for Automation:**
-    - Install Jenkins on the EC2 instance to automate deployment:
-    Install Java
+### Step 1: Install Jenkins for Automation:
+
+- Install Jenkins on the EC2 instance to automate deployment:
+    - Install Java & Jenkins
     
     ```bash
     sudo apt update
@@ -124,27 +130,27 @@ docker build --build-arg TMDB_V3_API_KEY=<your-api-key> -t netflix .
     sudo systemctl enable jenkins
     ```
     
-    - Access Jenkins in a web browser using the public IP of your EC2 instance.
+- Access Jenkins in a web browser using the public IP of your EC2 instance.
         
-        publicIp:8080
+  Your_public_Ip:8080
         
-2. **Install Necessary Plugins in Jenkins:**
+### Step 2: Install Necessary Plugins in Jenkins:
 
-Goto Manage Jenkins →Plugins → Available Plugins →
+- Goto Manage Jenkins →Plugins → Available Plugins →
 
-Install below plugins
+- Install below plugins
 
-1 Eclipse Temurin Installer (Install without restart)
+     - Eclipse Temurin Installer (Install without restart)
 
-2 SonarQube Scanner (Install without restart)
+     - SonarQube Scanner (Install without restart)
 
-3 NodeJs Plugin (Install Without restart)
+     - NodeJs Plugin (Install Without restart)
 
-4 Email Extension Plugin
+     - Email Extension Plugin
 
-### **Configure Java and Nodejs in Global Tool Configuration**
+### Step 3: Configure Java and Nodejs in Global Tool Configuration:
 
-Goto Manage Jenkins → Tools → Install JDK(17) and NodeJs(16)→ Click on Apply and Save
+- Goto Manage Jenkins → Tools → Install JDK(17) and NodeJs(16)→ Click on Apply and Save
 
 
 ### SonarQube
