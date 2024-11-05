@@ -22,7 +22,7 @@
     ```
     
 
-**Step 3: Install Docker and Run the App Using a Container:**
+### Step 3: Install Docker and Run the App Using a Container:
 
 - Set up Docker on the EC2 instance:
     
@@ -40,7 +40,8 @@
     ```bash
     docker build -t netflix .
     docker run -d --name netflix -p 8081:80 netflix:latest
-    
+    ```
+    ```bash
     #to delete
     docker stop <containerid>
     docker rmi -f netflix
