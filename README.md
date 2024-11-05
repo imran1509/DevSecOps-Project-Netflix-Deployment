@@ -760,13 +760,13 @@ Update your Prometheus configuration (prometheus.yml) to add a new job for scrap
 
 
 ```
-  - job_name: 'k8s'
-    metrics_path: '/metrics'
+  - job_name: "k8s"
+    metrics_path: "/metrics"
     static_configs:
-      - targets: ['node1Ip:9100']
+      - targets: ["node1Ip:9100"]
 ```
 
-Replace 'your-job-name' with a descriptive name for your job. The static_configs section specifies the targets to scrape metrics from, and in this case, it's set to nodeip:9001.
+Replace 'your-job-name' with a descriptive name for your job. The static_configs section specifies the targets to scrape metrics from, and in this case, it's set to nodeip:9100.
 
 Don't forget to reload or restart Prometheus to apply these changes to your configuration.
 
