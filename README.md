@@ -1,20 +1,18 @@
 
-# Deploy Netflix Clone on Cloud using Jenkins - DevSecOps Project!
+# DevSecOps Project!
 
-![](https://github.com/imran1509/DevSecOps-Project-Netflix-Deployment/blob/main/public/assets/home_page.png)
+![](https://github.com/imran1509/DevSecOps-Project-Netflix-Deployment/blob/main/public/assets/Project_Netflix.png)
 
-<div align="center">
-  <p align="center">Home Page</p>
-</div>
+# Deploy Netflix Clone on Cloud using Jenkins
 
 ## **Phase 1: Initial Setup and Deployment**
 
-**Step 1: Launch EC2 (Ubuntu 24.04):**
+### Step 1: Launch EC2 (Ubuntu 24.04):
 
 - Provision an EC2 instance on AWS with Ubuntu 24.04.
 - Connect to the instance using SSH.
 
-**Step 2: Clone the Code:**
+### Step 2: Clone the Code:
 
 - Update all the packages and then clone the code.
 - Clone your application's code repository onto the EC2 instance:
@@ -782,6 +780,13 @@ To deploy an application with ArgoCD, you can follow these steps, which I'll out
 
 4. **Access your Application**
    - To Access the app make sure port 30007 is open in your security group and then open a new tab paste your NodeIP:30007, your app should be running.
+  
+  ![](https://github.com/imran1509/DevSecOps-Project-Netflix-Deployment/blob/main/public/assets/home_page.png)
+
+<div align="center">
+  <p align="center">Home Page</p>
+</div>
+
 
 **Phase 7: Cleanup**
 
