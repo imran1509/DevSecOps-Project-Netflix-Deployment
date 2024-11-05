@@ -170,9 +170,7 @@ It will show an error cause you need API key
 
 - We will install a sonar scanner in the tools.
 
-Create a Jenkins webhook
-
-1. **Configure CI/CD Pipeline in Jenkins:**
+### Step 5: Configure CI/CD Pipeline in Jenkins:
 - Create a CI/CD pipeline in Jenkins to automate your application deployment.
 
 ```groovy
@@ -222,16 +220,16 @@ pipeline {
 
 Certainly, here are the instructions without step numbers:
 
-**Install Dependency-Check and Docker Tools in Jenkins**
+### Install Dependency-Check and Docker Tools in Jenkins
 
-**Install Dependency-Check Plugin:**
+### Install Dependency-Check Plugin:
 
 - Go to "Dashboard" in your Jenkins web interface.
 - Navigate to "Manage Jenkins" → "Manage Plugins."
 - Click on the "Available" tab and search for "OWASP Dependency-Check."
 - Check the checkbox for "OWASP Dependency-Check" and click on the "Install without restart" button.
 
-**Configure Dependency-Check Tool:**
+### Configure Dependency-Check Tool:
 
 - After installing the Dependency-Check plugin, you need to configure the tool.
 - Go to "Dashboard" → "Manage Jenkins" → "Global Tool Configuration."
@@ -239,7 +237,7 @@ Certainly, here are the instructions without step numbers:
 - Add the tool's name, e.g., "DP-Check."
 - Save your settings.
 
-**Install Docker Tools and Docker Plugins:**
+### Install Docker Tools and Docker Plugins:
 
 - Go to "Dashboard" in your Jenkins web interface.
 - Navigate to "Manage Jenkins" → "Manage Plugins."
@@ -252,7 +250,7 @@ Certainly, here are the instructions without step numbers:
   - docker-build-step
 - Click on the "Install without restart" button to install these plugins.
 
-**Add DockerHub Credentials:**
+### Add DockerHub Credentials:
 
 - To securely handle DockerHub credentials in your Jenkins pipeline, follow these steps:
   - Go to "Dashboard" → "Manage Jenkins" → "Manage Credentials."
@@ -341,16 +339,14 @@ pipeline{
         }
     }
 }
-
-
-If you get docker login failed errorr
-
-sudo su
-sudo usermod -aG docker jenkins
-sudo systemctl restart jenkins
-
-
 ```
+- If you get docker login failed errorr
+
+ ```bash
+    sudo su
+    sudo usermod -aG docker jenkins
+    sudo systemctl restart jenkins
+ ```
 
 **Phase 4: Monitoring**
 
