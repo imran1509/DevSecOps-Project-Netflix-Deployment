@@ -153,21 +153,22 @@ It will show an error cause you need API key
 - Goto Manage Jenkins → Tools → Install JDK(17) and NodeJs(16)→ Click on Apply and Save
 
 
-### SonarQube
+### Step 4: SonarQube
 
-Create the token
+- Go to Administration → Secuirity → Users and under token, generate the token
 
-Goto Jenkins Dashboard → Manage Jenkins → Credentials → Add Secret Text. It should look like this
+- Goto Jenkins Dashboard → Manage Jenkins → Credentials → System → Global Credentials → Add credential
+- select secret text as kind and paste your token in secret. textAdd Secret Text.
+- In ID and description write **sonar-token**
+- After adding sonar token
 
-After adding sonar token
+- Click on Apply and Save
 
-Click on Apply and Save
+- **The Configure System option** is used in Jenkins to configure different server
 
-**The Configure System option** is used in Jenkins to configure different server
+- **Global Tool Configuration** is used to configure different tools that we install using Plugins
 
-**Global Tool Configuration** is used to configure different tools that we install using Plugins
-
-We will install a sonar scanner in the tools.
+- We will install a sonar scanner in the tools.
 
 Create a Jenkins webhook
 
