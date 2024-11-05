@@ -1,20 +1,11 @@
-<div align="center">
-  <img src="./public/assets/Project_Netflix.png" alt="Logo" width="100%" height="100%">
-
-  <br>
-  <a href="http://netflix-clone-with-tmdb-using-react-mui.vercel.app/">
-    <img src="./public/assets/netflix-logo.png" alt="Logo" width="100" height="32">
-  </a>
-</div>
-
-<br />
-
-<div align="center">
-  <img src="./public/assets/home-page.png" alt="Logo" width="100%" height="100%">
-  <p align="center">Home Page</p>
-</div>
 
 # Deploy Netflix Clone on Cloud using Jenkins - DevSecOps Project!
+
+![](https://github.com/imran1509/DevSecOps-Project-Netflix-Deployment/blob/main/public/assets/home_page.png)
+
+<div align="center">
+  <p align="center">Home Page</p>
+</div>
 
 ## **Phase 1: Initial Setup and Deployment**
 
