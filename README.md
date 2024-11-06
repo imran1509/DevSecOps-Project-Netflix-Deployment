@@ -3,7 +3,37 @@
 
 ![](https://github.com/imran1509/DevSecOps-Project-Netflix-Deployment/blob/main/public/assets/Project_Netflix.png)
 
-# Deploy Netflix Clone on Cloud using Jenkins
+# Deploy a Netflix Clone with a Complete CI/CD Pipeline using jenkins on a cloud in a DevSecOps Environment
+
+In this project we deploy a Netflix clone application using a secure CI/CD pipeline built with Jenkins, Docker, and Kubernetes. This project includes implementing code quality and security tools (SonarQube, Trivy), as well as monitoring solutions (Prometheus, Grafana) to ensure reliability and visibility. Key components you'll explore include:
+
+### Dockerized Local Testing
+- Deploy the application in a Docker container for local testing.
+
+### Code Quality and Security Analysis
+- Set up SonarQube and Trivy for code quality analysis and security scanning.
+
+### CI/CD Pipeline with Jenkins
+- Install and configure Jenkins on Ubuntu for CI/CD automation.
+- Build Docker images within Jenkins and push them to Docker Hub.
+
+### Security Scanning
+- Use Trivy to scan Docker images for vulnerabilities.
+
+### Automated Application Deployment
+- Deploy the application to a Docker container.
+
+### Monitoring Setup
+- Install and configure Prometheus and Grafana for monitoring the application’s health and performance.
+- Set up Prometheus and Node Exporter via Helm in Kubernetes.
+
+### Notifications
+
+- Configure email notifications within Jenkins for pipeline updates.
+
+### Kubernetes Cluster Deployment
+- Create a Kubernetes cluster with Amazon EKS.
+- Use ArgoCD to deploy the Netflix clone on Kubernetes for streamlined app management.
 
 ## **Phase 1: Initial Setup and Deployment**
 
